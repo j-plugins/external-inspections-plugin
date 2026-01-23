@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<external-inspections>
+    <diagnostics>
+        <diagnostic
+                message="first 3 chars with error!"
+                start="0"
+                end="3"
+                file="my.inspections.xml"
+                level="error"
+        />
+        <diagnostic
+                message="unused"
+                start="10"
+                end="30"
+                file="my.inspections.xml"
+                level="unused"
+        />
+        <diagnostic
+                message="deprecated"
+                start="40"
+                end="50"
+                file="my.inspections.xml"
+                level="deprecated"
+        />
+        <diagnostic
+                message="warning"
+                start="50"
+                end="60"
+                file="my.inspections.xml"
+                level="warning"
+        />
+        <diagnostic
+                message="info"
+                start="60"
+                end="70"
+                file="my.inspections.xml"
+                level="info"
+        />
+    </diagnostics>
+</external-inspections>
