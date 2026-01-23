@@ -23,7 +23,7 @@ class ExternalDiagnosticsIndex : FileBasedIndexExtension<IndexKey, IndexValue>()
         val NAME = ID.create<IndexKey, IndexValue>("ExternalInspections.ExternalDiagnosticsIndex")
     }
 
-    private val xmlDecoder = XML {
+    private val xmlDecoder = XML.recommended_1_0 {
         xmlVersion = XmlVersion.XML10
         xmlDeclMode = XmlDeclMode.Auto
         repairNamespaces = true
