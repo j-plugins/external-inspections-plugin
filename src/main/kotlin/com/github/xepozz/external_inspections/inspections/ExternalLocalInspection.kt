@@ -1,15 +1,14 @@
 package com.github.xepozz.external_inspections.inspections
 
-import com.github.xepozz.external_inspections.services.MyProjectService
+import com.github.xepozz.external_inspections.services.ExternalDiagnosticsService
 import com.intellij.codeInspection.*
-import com.intellij.openapi.components.service
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiFile
 
 class ExternalLocalInspection : LocalInspectionTool() {
     override fun checkFile(file: PsiFile, manager: InspectionManager, isOnTheFly: Boolean) =
         file.project
-            .service<MyProjectService>()
+            .getService(ExternalDiagnosticsService::class.java)
             .getDiagnosticsForFile(file.name)
             .map { diagnostic ->
                 val start = (diagnostic.start ?: 0).coerceIn(0, file.textLength)

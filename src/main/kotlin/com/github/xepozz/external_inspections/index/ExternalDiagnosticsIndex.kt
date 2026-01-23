@@ -20,7 +20,7 @@ typealias IndexValue = Collection<Diagnostic>
 
 class ExternalDiagnosticsIndex : FileBasedIndexExtension<IndexKey, IndexValue>() {
     companion object {
-        val NAME = ID.create<IndexKey, IndexValue>("com.github.xepozz.external_inspections.ExternalDiagnosticsIndex")
+        val NAME = ID.create<IndexKey, IndexValue>("ExternalInspections.ExternalDiagnosticsIndex")
     }
 
     private val xmlDecoder = XML {

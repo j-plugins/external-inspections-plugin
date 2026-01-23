@@ -14,10 +14,6 @@
                 instance="com.github.xepozz.external_inspections.settings.ExternalInspectionsConfigurable"
                 id="com.github.xepozz.external_inspections.settings.ExternalInspectionsConfigurable"
                 displayName="External Inspections"/>
-        <toolWindow
-                factoryClass="com.github.xepozz.external_inspections.toolWindow.ExternalInspectionsToolWindowFactory"
-                id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.xepozz.external_inspections.startup.MyProjectActivity"/>
         <localInspection language=""
                          displayName="External Inspection"
                          groupName="External"
