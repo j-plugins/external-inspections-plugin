@@ -5,11 +5,12 @@ import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support
-    alias(libs.plugins.kotlinSerialization) // Kotlinx Serialization support
+//    alias(libs.plugins.kotlinSerialization) // Kotlinx Serialization support
     alias(libs.plugins.intelliJPlatform) // IntelliJ Platform Gradle Plugin
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
     alias(libs.plugins.kover) // Gradle Kover Plugin
+    kotlin("plugin.serialization") version "2.2.21" // Ensure this matches your Kotlin version
 }
 
 group = providers.gradleProperty("pluginGroup").get()
@@ -33,6 +34,8 @@ repositories {
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/version_catalogs.html
 dependencies {
     implementation(libs.kotlinxSerializationJson)
+    implementation("io.github.pdvrieze.xmlutil:core:1.0.0-rc2")
+    implementation("io.github.pdvrieze.xmlutil:serialization:1.0.0-rc2")
     testImplementation(libs.junit)
     testImplementation(libs.opentest4j)
 

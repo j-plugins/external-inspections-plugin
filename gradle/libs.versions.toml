@@ -2,6 +2,8 @@
 # libraries
 junit = "4.13.2"
 kotlinx-serialization-json = "1.8.0"
+kotlinx-serialization-xml = "0.90.0"
+pdvrieze-serialization-xml = "0.90.3.0"
 opentest4j = "1.3.0"
 
 # plugins
@@ -14,6 +16,7 @@ qodana = "2025.2.2"
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinxSerializationJson = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinxSerializationXml = { group = "nl.pdvrieze.xmlutil", name = "serialization", version.ref = "pdvrieze-serialization-xml" }
 opentest4j = { group = "org.opentest4j", name = "opentest4j", version.ref = "opentest4j" }
 
 [plugins]

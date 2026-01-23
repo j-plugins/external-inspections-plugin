@@ -12,6 +12,6 @@ class MyProjectService(project: Project) {
         thisLogger().info(ExternalInspectionsBundle.message("projectService", project.name))
         thisLogger().warn("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
     }
-
     fun getRandomNumber() = (1..100).random()
+
 }
