@@ -20,5 +20,6 @@ data class Diagnostic(
     val message: String,
     val start: Int,
     val end: Int,
-    val file: String
+    val file: String,
+    val level: String,
 )

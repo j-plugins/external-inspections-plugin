@@ -31,7 +31,7 @@ class ExternalInspectionsToolWindowFactory : ToolWindowFactory {
             add(label)
             add(JButton(ExternalInspectionsBundle.message("shuffle")).apply {
                 addActionListener {
-                    label.text = ExternalInspectionsBundle.message("randomLabel", service.getRandomNumber())
+//                    label.text = ExternalInspectionsBundle.message("randomLabel", service.getRandomNumber())
                 }
             })
         }

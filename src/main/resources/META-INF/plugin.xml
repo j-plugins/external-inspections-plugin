@@ -9,7 +9,14 @@
     <resource-bundle>messages.ExternalInspections</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.xepozz.external_inspections.toolWindow.ExternalInspectionsToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.xepozz.external_inspections.startup.MyProjectActivity" />
+        <toolWindow
+                factoryClass="com.github.xepozz.external_inspections.toolWindow.ExternalInspectionsToolWindowFactory"
+                id="MyToolWindow"/>
+        <postStartupActivity implementation="com.github.xepozz.external_inspections.startup.MyProjectActivity"/>
+        <localInspection language=""
+                         displayName="External Inspection"
+                         groupName="External"
+                         enabledByDefault="true"
+                         implementationClass="com.github.xepozz.external_inspections.inspections.ExternalLocalInspection"/>
     </extensions>
 </idea-plugin>
