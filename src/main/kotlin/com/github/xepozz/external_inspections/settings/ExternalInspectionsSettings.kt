@@ -18,6 +18,6 @@ class ExternalInspectionsSettings : SimplePersistentStateComponent<ExternalInspe
     }
 
     companion object {
-        fun getInstance(project: Project): ExternalInspectionsSettings = project.service()
+        fun getInstance(project: Project): ExternalInspectionsSettings = project.getService(ExternalInspectionsSettings::class.java)
     }
 }
