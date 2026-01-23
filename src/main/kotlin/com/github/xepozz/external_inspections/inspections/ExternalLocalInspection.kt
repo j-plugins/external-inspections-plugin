@@ -12,8 +12,8 @@ class ExternalLocalInspection : LocalInspectionTool() {
             .service<MyProjectService>()
             .getDiagnosticsForFile(file.name)
             .map { diagnostic ->
-                val start = diagnostic.start.coerceIn(0, file.textLength)
-                val end = diagnostic.end.coerceIn(start, file.textLength)
+                val start = (diagnostic.start ?: 0).coerceIn(0, file.textLength)
+                val end = (diagnostic.end ?: start).coerceIn(start, file.textLength)
                 val range = TextRange(start, end)
                 val level = parseLevel(diagnostic.level)
 
