@@ -9,6 +9,11 @@
     <resource-bundle>messages.ExternalInspections</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable
+                parentId="language"
+                instance="com.github.xepozz.external_inspections.settings.ExternalInspectionsConfigurable"
+                id="com.github.xepozz.external_inspections.settings.ExternalInspectionsConfigurable"
+                displayName="External Inspections"/>
         <toolWindow
                 factoryClass="com.github.xepozz.external_inspections.toolWindow.ExternalInspectionsToolWindowFactory"
                 id="MyToolWindow"/>
