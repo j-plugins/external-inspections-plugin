@@ -18,6 +18,8 @@ General Usage:
 - Add tags describes what you want to highlight
 - Ensure the file name matches available file patterns in the settings
 
+Check out the [playground](https://github.com/j-plugins/external-inspections-plugin/tree/main/playground) for more details.
+
 ## Donation
 
 Open-source tools can greatly improve workflows, helping developers and businesses save time and increase revenue.
