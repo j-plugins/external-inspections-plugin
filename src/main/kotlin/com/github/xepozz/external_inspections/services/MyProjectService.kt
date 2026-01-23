@@ -1,15 +1,15 @@
-package com.github.xepozz.externalinspectionsplugin.services
+package com.github.xepozz.external_inspections.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.xepozz.externalinspectionsplugin.MyBundle
+import com.github.xepozz.external_inspections.ExternalInspectionsBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {
 
     init {
-        thisLogger().info(MyBundle.message("projectService", project.name))
+        thisLogger().info(ExternalInspectionsBundle.message("projectService", project.name))
         thisLogger().warn("Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.")
     }
 

@@ -1,4 +1,4 @@
-package com.github.xepozz.externalinspectionsplugin.startup
+package com.github.xepozz.external_inspections.startup
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project

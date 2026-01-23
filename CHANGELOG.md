@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# external-inspections-plugin Changelog
+# External Inspections Changelog
 
 ## [Unreleased]
 ### Added

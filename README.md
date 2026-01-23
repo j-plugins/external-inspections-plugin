@@ -1,4 +1,4 @@
-# external-inspections-plugin
+# External Inspections
 
 ![Build](https://github.com/xepozz/external-inspections-plugin/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
