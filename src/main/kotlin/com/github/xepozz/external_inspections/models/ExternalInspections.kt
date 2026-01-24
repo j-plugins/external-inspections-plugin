@@ -8,7 +8,7 @@ import nl.adaptivity.xmlutil.serialization.XmlSerialName
 @XmlSerialName("external-inspections")
 data class ExternalInspections(
     @XmlChildrenName("diagnostics")
-    val diagnostics: List<Diagnostic>
+    val diagnostics: List<Diagnostic> = emptyList()
 ): java.io.Serializable
 
 @Serializable

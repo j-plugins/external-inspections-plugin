@@ -58,4 +58,11 @@ class ExternalInspectionsJsonTest {
         assertEquals(0, diagnostic.start)
         assertEquals(10, diagnostic.end)
     }
+
+    @Test
+    fun `test json deserialization with missing diagnostics field`() {
+        val jsonString = "{}"
+        val result = json.decodeFromString<ExternalInspections>(jsonString)
+        assertEquals(0, result.diagnostics.size)
+    }
 }
