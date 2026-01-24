@@ -12,15 +12,20 @@
 
 Let external tools inspect your code and provide feedback.
 
-General Usage:
+### Features
 
-- Create an XML file
-- Add tags describes what you want to highlight
+- XML Support: Define diagnostics using standard XML format.
+- JSON Support: Use JSON for a more compact representation of diagnostics.
+- Custom File Filters: Configure which files the plugin should track using wildcard patterns (e.g., `*.inspections.xml`, `custom-report.json`).
+
+### General Usage:
+
+- Create an XML or JSON file
+- Add tags or properties describing what you want to highlight
 - Ensure the file name matches available file patterns in the settings
 
-TODO:
+### TODO:
 
-- JSON format support
 - Introduce XSD and JSON Schema
 - Add inspections to the files
 

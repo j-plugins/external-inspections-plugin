@@ -1,0 +1,11 @@
+{
+  "diagnostics": [
+    {
+      "message": "Example error",
+      "start": "0",
+      "end": "10",
+      "file": "my.inspections.json",
+      "level": "error"
+    }
+  ]
+}

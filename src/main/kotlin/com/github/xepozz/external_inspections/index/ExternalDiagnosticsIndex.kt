@@ -9,11 +9,13 @@ import com.intellij.util.indexing.*
 import com.intellij.util.io.DataExternalizer
 import com.intellij.util.io.EnumeratorStringDescriptor
 import com.intellij.util.io.KeyDescriptor
+import kotlinx.serialization.json.Json
 import nl.adaptivity.xmlutil.XmlDeclMode
 import nl.adaptivity.xmlutil.core.XmlVersion
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.DataInput
 import java.io.DataOutput
+import java.util.*
 
 typealias IndexKey = String
 typealias IndexValue = Collection<Diagnostic>
@@ -29,17 +31,30 @@ class ExternalDiagnosticsIndex : FileBasedIndexExtension<IndexKey, IndexValue>()
         repairNamespaces = true
     }
 
+    private val jsonDecoder = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+    }
+
     override fun getName(): ID<IndexKey, IndexValue> = NAME
 
     override fun getIndexer(): DataIndexer<IndexKey, IndexValue, FileContent> {
         return DataIndexer { inputData ->
             try {
-                val xmlString = inputData.contentAsText.toString()
-                if (xmlString.isBlank()) return@DataIndexer emptyMap()
-                val result = xmlDecoder.decodeFromString(
-                    deserializer = ExternalInspections.serializer(),
-                    string = xmlString,
-                )
+                val content = inputData.contentAsText.toString()
+                if (content.isBlank()) return@DataIndexer emptyMap()
+                val extension = inputData.file.extension?.lowercase(Locale.getDefault())
+                val result = if (extension == "json") {
+                    jsonDecoder.decodeFromString(
+                        deserializer = ExternalInspections.serializer(),
+                        string = content,
+                    )
+                } else {
+                    xmlDecoder.decodeFromString(
+                        deserializer = ExternalInspections.serializer(),
+                        string = content,
+                    )
+                }
                 // Map diagnostics by the file they refer to
                 result.diagnostics.groupBy { it.file }
             } catch (e: Exception) {

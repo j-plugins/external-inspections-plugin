@@ -13,6 +13,7 @@ class ExternalInspectionsSettings : SimplePersistentStateComponent<ExternalInspe
         init {
             if (filePatterns.isEmpty()) {
                 filePatterns.add("*.inspections.xml")
+                filePatterns.add("*.inspections.json")
             }
         }
     }
