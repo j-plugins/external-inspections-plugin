@@ -1,0 +1,9 @@
+name: Other
+description: Anything else
+title: "[OTHER] "
+body:
+  - type: textarea
+    id: content
+    attributes:
+      label: Content
+      description: Describe your issue or question.
