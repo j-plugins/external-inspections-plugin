@@ -13,7 +13,7 @@ class ExternalInspectionsXmlTest {
     @Test
     fun `test xml deserialization`() {
         val xmlString = """
-            <external-inspections>
+            <external-inspections xmlns="http://j-plugins.github.io/external-inspections.xsd">
                 <diagnostics>
                     <diagnostic message="Example error" start="0" end="10" file="example.txt" level="error" />
                 </diagnostics>
@@ -32,14 +32,14 @@ class ExternalInspectionsXmlTest {
 
     @Test
     fun `test xml deserialization with missing diagnostics field`() {
-        val xmlString = "<external-inspections/>"
+        val xmlString = "<external-inspections xmlns=\"http://j-plugins.github.io/external-inspections.xsd\"/>"
         val result = xml.decodeFromString<ExternalInspections>(xmlString)
         assertEquals(0, result.diagnostics.size)
     }
 
     @Test
     fun `test xml deserialization with empty diagnostics tag`() {
-        val xmlString = "<external-inspections><diagnostics/></external-inspections>"
+        val xmlString = "<external-inspections xmlns=\"http://j-plugins.github.io/external-inspections.xsd\"><diagnostics/></external-inspections>"
         val result = xml.decodeFromString<ExternalInspections>(xmlString)
         assertEquals(0, result.diagnostics.size)
     }

@@ -17,6 +17,7 @@ Let external tools inspect your code and provide feedback.
 - XML Support: Define diagnostics using standard XML format.
 - JSON Support: Use JSON for a more compact representation of diagnostics.
 - Custom File Filters: Configure which files the plugin should track using wildcard patterns (e.g., `*.inspections.xml`, `custom-report.json`).
+- XSD Schema: Validation and autocompletion for XML inspection files. Supports both local resources and remote GitHub-hosted schema.
 
 ### General Usage:
 
@@ -26,7 +27,7 @@ Let external tools inspect your code and provide feedback.
 
 ### TODO:
 
-- Introduce XSD and JSON Schema
+- Introduce JSON Schema
 - Add inspections to the files
 
 Check out the [playground](https://github.com/j-plugins/external-inspections-plugin/tree/main/playground) for more details.

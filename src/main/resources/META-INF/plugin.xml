@@ -19,6 +19,9 @@
                          groupName="External"
                          enabledByDefault="true"
                          implementationClass="com.github.xepozz.external_inspections.inspections.ExternalLocalInspection"/>
-        <fileBasedIndex implementation="com.github.xepozz.external_inspections.index.ExternalDiagnosticsIndex"/>
+        <fileBasedIndex
+                implementation="com.github.xepozz.external_inspections.index.ExternalDiagnosticsIndex"/>
+        <standardResourceProvider
+                implementation="com.github.xepozz.external_inspections.ExternalInspectionsResourceProvider"/>
     </extensions>
 </idea-plugin>

@@ -32,8 +32,10 @@ class ExternalLocalInspection : LocalInspectionTool() {
         "error" -> ProblemHighlightType.ERROR
         "info" -> ProblemHighlightType.INFORMATION
         "warning" -> ProblemHighlightType.GENERIC_ERROR_OR_WARNING
+        "weak_warning" -> ProblemHighlightType.WEAK_WARNING
         "deprecated" -> ProblemHighlightType.LIKE_DEPRECATED
         "unused" -> ProblemHighlightType.LIKE_UNUSED_SYMBOL
+        "unknown" -> ProblemHighlightType.LIKE_UNKNOWN_SYMBOL
         else -> ProblemHighlightType.INFORMATION
     }
 

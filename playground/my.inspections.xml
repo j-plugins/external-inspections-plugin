@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<external-inspections>
+<external-inspections
+        xmlns="http://j-plugins.github.io/external-inspections.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://j-plugins.github.io/external-inspections.xsd https://raw.githubusercontent.com/j-plugins/external-inspections-plugin/main/src/main/resources/external-inspections.xsd">
     <diagnostics>
         <diagnostic
                 message="first 3 chars with error!"

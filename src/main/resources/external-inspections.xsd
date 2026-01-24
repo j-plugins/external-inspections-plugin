@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://j-plugins.github.io/external-inspections.xsd"
+           xmlns="http://j-plugins.github.io/external-inspections.xsd">
+
+    <xs:element name="external-inspections" type="ExternalInspections"/>
+
+    <xs:complexType name="ExternalInspections">
+        <xs:sequence>
+            <xs:element name="diagnostics" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="diagnostic" type="Diagnostic" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Diagnostic">
+        <xs:attribute name="message" type="xs:string" use="required"/>
+        <xs:attribute name="start" type="xs:integer" use="required"/>
+        <xs:attribute name="end" type="xs:integer" use="required"/>
+        <xs:attribute name="file" type="xs:string" use="required"/>
+        <xs:attribute name="level" default="info" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="error"/>
+                    <xs:enumeration value="info"/>
+                    <xs:enumeration value="warning"/>
+                    <xs:enumeration value="weak_warning"/>
+                    <xs:enumeration value="deprecated"/>
+                    <xs:enumeration value="unused"/>
+                    <xs:enumeration value="unknown"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>
