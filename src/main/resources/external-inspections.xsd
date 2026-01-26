@@ -19,11 +19,21 @@
     </xs:complexType>
 
     <xs:complexType name="Diagnostic">
+        <xs:sequence>
+            <xs:element name="intentions" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="command" type="CommandIntention"/>
+                        <xs:element name="replace" type="ReplaceIntention"/>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
         <xs:attribute name="message" type="xs:string" use="required"/>
-        <xs:attribute name="start" type="xs:integer" use="required"/>
-        <xs:attribute name="end" type="xs:integer" use="required"/>
+        <xs:attribute name="start" type="xs:integer" use="optional"/>
+        <xs:attribute name="end" type="xs:integer" use="optional"/>
         <xs:attribute name="file" type="xs:string" use="required"/>
-        <xs:attribute name="level" default="info" use="required">
+        <xs:attribute name="level" default="info" use="optional">
             <xs:simpleType>
                 <xs:restriction base="xs:string">
                     <xs:enumeration value="error"/>
@@ -36,6 +46,25 @@
                 </xs:restriction>
             </xs:simpleType>
         </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="CommandIntention">
+        <xs:sequence>
+            <xs:element name="arguments" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="argument" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="binary" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ReplaceIntention">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="newText" type="xs:string" use="required"/>
     </xs:complexType>
 
 </xs:schema>

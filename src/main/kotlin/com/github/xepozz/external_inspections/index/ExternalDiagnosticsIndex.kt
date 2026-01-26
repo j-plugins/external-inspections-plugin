@@ -1,7 +1,6 @@
 package com.github.xepozz.external_inspections.index
 
-import com.github.xepozz.external_inspections.models.Diagnostic
-import com.github.xepozz.external_inspections.models.ExternalInspections
+import com.github.xepozz.external_inspections.models.*
 import com.github.xepozz.external_inspections.settings.ExternalInspectionsSettings
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.ProjectManager
@@ -92,6 +91,26 @@ object ExternalDiagnosticsExternalizer : DataExternalizer<IndexValue> {
             writeNullableInt(out, diagnostic.end)
             out.writeUTF(diagnostic.file)
             out.writeUTF(diagnostic.level)
+            out.writeInt(diagnostic.intentions.list.size)
+            for (intention in diagnostic.intentions.list) {
+                when (intention) {
+                    is CommandIntention -> {
+                        out.writeByte(0)
+                        out.writeUTF(intention.name)
+                        out.writeUTF(intention.binary)
+                        out.writeInt(intention.arguments.size)
+                        for (argument in intention.arguments) {
+                            out.writeUTF(argument)
+                        }
+                    }
+
+                    is ReplaceIntention -> {
+                        out.writeByte(1)
+                        out.writeUTF(intention.name)
+                        out.writeUTF(intention.newText)
+                    }
+                }
+            }
         }
     }
 
@@ -99,13 +118,42 @@ object ExternalDiagnosticsExternalizer : DataExternalizer<IndexValue> {
         val size = `in`.readInt()
         val result = mutableListOf<Diagnostic>()
         repeat(size) {
+            val message = `in`.readUTF()
+            val start = readNullableInt(`in`)
+            val end = readNullableInt(`in`)
+            val file = `in`.readUTF()
+            val level = `in`.readUTF()
+            val intentionsSize = `in`.readInt()
+            val intentions = mutableListOf<Intention>()
+            repeat(intentionsSize) {
+                val type = `in`.readByte()
+                when (type.toInt()) {
+                    0 -> {
+                        val name = `in`.readUTF()
+                        val binary = `in`.readUTF()
+                        val argumentsSize = `in`.readInt()
+                        val arguments = mutableListOf<String>()
+                        repeat(argumentsSize) {
+                            arguments.add(`in`.readUTF())
+                        }
+                        intentions.add(CommandIntention(name, binary, arguments))
+                    }
+
+                    1 -> {
+                        val name = `in`.readUTF()
+                        val newText = `in`.readUTF()
+                        intentions.add(ReplaceIntention(name, newText))
+                    }
+                }
+            }
             result.add(
                 Diagnostic(
-                    message = `in`.readUTF(),
-                    start = readNullableInt(`in`),
-                    end = readNullableInt(`in`),
-                    file = `in`.readUTF(),
-                    level = `in`.readUTF()
+                    message = message,
+                    start = start,
+                    end = end,
+                    file = file,
+                    level = level,
+                    intentions = Intentions(intentions)
                 )
             )
         }
