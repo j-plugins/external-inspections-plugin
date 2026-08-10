@@ -10,7 +10,7 @@ plugins {
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
     alias(libs.plugins.kover) // Gradle Kover Plugin
-    kotlin("plugin.serialization") version "2.3.0" // Ensure this matches your Kotlin version
+    kotlin("plugin.serialization") version "2.3.10" // Ensure this matches your Kotlin version
 }
 
 group = providers.gradleProperty("pluginGroup").get()
